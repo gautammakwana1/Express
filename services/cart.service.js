@@ -22,7 +22,7 @@ module.exports = class CartServices {
     };
 
     // get All cart
-    async getAllCart(body) {
+    async getAllCart(query,user) {
         try {
             let body = {isDelete : false};
             if(query.me === 'true'){
