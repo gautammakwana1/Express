@@ -22,10 +22,10 @@ module.exports = class CartServices {
     };
 
     // get All cart
-    async getAllCart(query,user) {
+    async getAllCart(query, user) {
         try {
-            let body = {isDelete : false};
-            if(query.me === 'true'){
+            let body = { isDelete: false };
+            if (query.me === 'true') {
                 body.user = user._id
             }
             let results = await Cart.find(body).populate('cartItem').populate({
@@ -41,9 +41,9 @@ module.exports = class CartServices {
     };
 
     // Update cart
-    async updateCart(id,body) {
+    async updateCart(id, body) {
         try {
-            return await Cart.findByIdAndUpdate(id,{ $set:body }, { new: true });
+            return await Cart.findByIdAndUpdate(id, { $set: body }, { new: true });
         } catch (error) {
             console.log(error);
             return res.json({ message: "Internal server error From: Cart service " });
@@ -51,12 +51,12 @@ module.exports = class CartServices {
     };
 
     // UpdateMany cart
-    async updatemany(user,body){
+    async updatemany(user, body) {
         try {
-            return await Cart.updateMany({user},{$set : body});
+            return await Cart.updateMany({ user: user }, { $set: body }, { new: true });
         } catch (error) {
             console.log(error);
-            return res.json({message : "Ineternal Server Error from cart Service"});
+            return res.json({ message: "Ineternal Server Error from cart Service" });
         }
     };
 };
