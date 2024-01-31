@@ -9,6 +9,10 @@ exports.registerUser = async (req, res) => {
         if (user) {
             return res.json({ message: "User is already exist.." });
         }
+        if(req.file){
+            console.log(req.file);
+            req.body.profileImage = req.file.path;
+        }
         let hashpassword = await bcrypt.hash(req.body.password, 10);
         // console.log(hashpassword);
         user = await userService.addNewUser({ ...req.body, password: hashpassword });

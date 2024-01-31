@@ -18,6 +18,9 @@ const userSchema = mongoose.Schema({
     mobileNo : {
         type : String
     },
+    profileImage:{
+        type : String
+    },
     //Soft Delete
     isDelete : {
         type : Boolean,

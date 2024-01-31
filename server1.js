@@ -3,6 +3,7 @@ const express = require("express");
 const server = express();
 const colors = require("colors");
 const path = require("path");
+const imagePath = path.join(__dirname,'images');
 const port = process.env.PORT;
 const dbURL = process.env.MONGO_URL;
 
@@ -19,6 +20,7 @@ server.use('/api/product', productRoutes);
 server.use('/api/user', userRoutes);
 server.use('/api/cart', cartRoutes);
 server.use('/api/order', orderRoutes);
+server.use('/images',express.static(imagePath));
 
 server.get('*', (req, res) => {
     res.end("<h1>Page Not Found....</h1>")
