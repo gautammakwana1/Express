@@ -6,6 +6,7 @@
   "scripts": {
     "server": "nodemon server.js",
     "app": "nodemon app.js",
+    "app2": "nodemon app2.js",
     "server1": "nodemon server1.js"
   },
   "keywords": [],
@@ -16,7 +17,9 @@
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.4",
     "morgan": "^1.10.0",
