@@ -38,7 +38,7 @@ exports.loginUser = async (req, res) => {
             userId: user._id
         }
         // console.log("Payload is => ",payLoad);
-        let token = jwt.sign(payLoad, 'Gautam');
+        let token = jwt.sign(payLoad, 'Gautam',{expiresIn: '1 day'});       //"expiresIn" is optional parameter it define token is invalid in given time.
         // console.log("Token is => ",token);
         res.status(201).json({ token, message: "Login Successfully.." });
     } catch (error) {
@@ -88,11 +88,15 @@ exports.deleteUser = async (req, res) => {
 
 exports.updatePassword = async (req, res) => {
     try {
+        // let {oldPassword, newPassword, confirmPassword} = req.body;
         let user = await userService.getUserById(req.user._id);
         // console.log(user);
         if (!user) {
             return res.json({ message: "User is not found" });
         }
+        // if (!oldPassword || !newPassword || !confirmPassword) {
+        //     return res.json("Please enter all details.");
+        // }
         let comparepassword = await bcrypt.compare(req.body.oldPassword, user.password);
         let old = req.body.oldPassword;
         // console.log("old Pass => " ,old);

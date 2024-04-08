@@ -1,7 +1,6 @@
 const ProductServices = require('../services/product.service');
 const productService = new ProductServices();
 
-
 exports.getAllProduct = async (req, res) => {
     let products = await productService.getAllProducts({ isDelete: false });
     res.json({ Product: products });
